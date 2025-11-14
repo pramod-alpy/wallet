@@ -9,7 +9,7 @@ This application allows users to manage funds, transfer money, view transaction 
 
 1️⃣ Clone the Repository
 ```
-git clone https://github.com/yourusername/wallet-app.git
+git clone https://github.com/pramod-alpy/wallet.git
 cd wallet-app
 ```
 
