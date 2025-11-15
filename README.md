@@ -32,9 +32,13 @@ php artisan key:generate
 ```
 6️⃣ Configure Database in .env
 ```
-DB_DATABASE=wallet
+DB_CONNECTION=mysql
+DB_HOST=localhost
+DB_PORT=3306
+DB_DATABASE=wallet_db
 DB_USERNAME=root
 DB_PASSWORD=
+
 ```
 7️⃣ Setup Pusher (or WebSockets)
 ```
@@ -46,14 +50,55 @@ BROADCAST_DRIVER=pusher
 ```
 8️⃣ Run Migrations
 ```
-
 php artisan migrate
 ```
-9️⃣ Start Backend
+9️⃣ Run Seeders
+```
+php artisan db:seed
+```
+🔟 Start Backend Server
 ```
 php artisan serve
 ```
-🔟 Start Frontend
+1️⃣1️⃣ Start Frontend Server
 ```
 npm run dev
 ```
+
+👤 Demo Login Credentials
+
+Email: pramod.alpy84@gmail.com
+
+Password: password
+
+💸 How to Use
+
+Add Money
+
+Click the Add Money button
+
+Enter an amount (e.g., 100)
+
+Click Add
+
+Send Money
+
+Click the Send Money button
+
+Enter the Receiver ID (e.g., 2)
+
+Enter the Amount (e.g., 10)
+
+Click Send
+
+The amount will be debited from your account and displayed in the Transaction History
+
+⚙️ Tech Stack
+
+Backend: Laravel, MySQL, Laravel Sanctum
+
+Frontend: Vue.js, Tailwind CSS
+
+Realtime: Pusher / Laravel WebSockets
+
+Other: Composer, npm
