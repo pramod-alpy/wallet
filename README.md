@@ -67,38 +67,36 @@ npm run dev
 
 👤 Demo Login Credentials
 
-Email: pramod.alpy84@gmail.com
+* Email: pramod.alpy84@gmail.com
 
-Password: password
+* Password: password
 
 💸 How to Use
 
 Add Money
 
-Click the Add Money button
+* Click the Add Money button
 
-Enter an amount (e.g., 100)
+* Enter an amount (e.g., 100)
 
-Click Add
+* Click Add
 
 Send Money
 
-Click the Send Money button
+* Click the Send Money button
 
-Enter the Receiver ID (e.g., 2)
+* Enter the Receiver ID (e.g., 2)
 
-Enter the Amount (e.g., 10)
+* Enter the Amount (e.g., 10)
 
-Click Send
+* Click Send
 
 The amount will be debited from your account and displayed in the Transaction History
 
 ⚙️ Tech Stack
 
-Backend: Laravel, MySQL, Laravel Sanctum
+* Backend: Laravel, MySQL, Laravel Sanctum
 
-Frontend: Vue.js, Tailwind CSS
+* Frontend: Vue.js, Tailwind CSS
 
-Realtime: Pusher / Laravel WebSockets
-
-Other: Composer, npm
+* Other: Composer, npm
