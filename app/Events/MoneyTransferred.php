@@ -2,37 +2,33 @@
 
 namespace App\Events;
 
+use Illuminate\Broadcasting\PrivateChannel;   // <-- REQUIRED
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\Log;
 
 class MoneyTransferred implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    public $transaction;
-    public $senderId;
-    public $receiverId;
+    public $userId;
+    public $newBalance;
 
-    public function __construct($transaction)
-    {
-        $this->transaction = $transaction;
-        $this->senderId = $transaction['sender_id'];
-        $this->receiverId = $transaction['receiver_id'];
+    public function __construct($userId, $newBalance)
+    {      
+        $this->userId = $userId;
+        $this->newBalance = $newBalance;
     }
 
     public function broadcastOn()
-    {
-        // Broadcast to both sender and receiver
-        return [
-            new \Illuminate\Broadcasting\PrivateChannel('user.' . $this->receiverId),
-            new \Illuminate\Broadcasting\PrivateChannel('user.' . $this->senderId),
-        ];
+    {        
+        return new PrivateChannel('user.' . $this->userId);
     }
 
     public function broadcastAs()
-    {
-        return 'money.transferred';
+    {        
+        return 'balance.updated';
     }
 }

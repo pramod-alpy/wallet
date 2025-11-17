@@ -19,7 +19,7 @@
       {{ flashMessage }}
     </div>
           <div>
-            <p><strong>My Wallet Balance:</strong> {{ formatCurrency(balance) }}</p>
+            <p><strong>My Wallet Balance:</strong> <span id="user-balance">{{ formatCurrency(balance) }}</span></p>
 
             <!-- Action Buttons -->
             <div class="mt-4 space-x-4">
@@ -111,7 +111,6 @@ import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { Head } from '@inertiajs/vue3';
 import { ref, onMounted, watch } from 'vue';
 import axios from 'axios';
-import { useEcho } from '../composables/useEcho';
 
 axios.defaults.withCredentials = true;
 
@@ -143,8 +142,7 @@ const showFlash = (message, type = 'success') => {
 const fetchUser = async () => {
   try {
     const res = await axios.get('/api/user');
-    user.value = res.data;
-    console.log('User:', res.data);
+    user.value = res.data;    
   } catch (err) {
     console.error('Failed to fetch user', err);
   }
@@ -220,26 +218,20 @@ const transfer = async () => {
 };
 
 // ------------------ INIT ECHO ------------------
-const initEcho = (userId) => {
+
+const initEcho = (userId) => {   
   if (!userId) return;
-
-  const echo = useEcho();
-
-  echo.private(`user.${userId}`)
-    .subscribed(() => console.log(`Subscribed to user.${userId}`))
-    .listen('.money.transferred', (e) => {
-      console.log('Real-time money transfer event:', e);
-
-      // Update balances
-      if (e.transaction.sender_id === userId) {
-        balance.value -= (e.transaction.amount + (e.transaction.commission_fee || 0));
-      }
-      if (e.transaction.receiver_id === userId) {
-        balance.value += e.transaction.amount;
-      }
-
-      // Update transaction list
-      transactions.value.unshift(e.transaction);
+  const echo =  window.Echo;
+echo.private(`user.${user.value.id}`)
+    .subscribed(() => {
+        console.log("CONNECTED to channel user." + user.value.id);
+    })
+    .error((err) => {
+        console.error("Channel error:", err);
+    })
+    .listen('.balance.updated', (e) => {
+        console.log("EVENT RECEIVED:", e);
+        balance.value = e.newBalance;
     });
 };
 
@@ -248,14 +240,12 @@ const initEcho = (userId) => {
 onMounted(async () => {
   await fetchUser();
   await fetchTransactions();
-  // No need to call initEcho here; watch will trigger
 });
 
 // Watch for user.id and initialize Echo once available
 watch(
   () => user.value?.id,
-  (id) => {
-    console.log("watch id="+id)
+  (id) => {  
     if (id) initEcho(id);
   },
   { immediate: true }

@@ -40,13 +40,17 @@ DB_USERNAME=root
 DB_PASSWORD=
 
 ```
-7️⃣ Setup Pusher (or WebSockets)
+7️⃣ Setup Pusher 
 ```
 PUSHER_APP_ID=xxxx
 PUSHER_APP_KEY=xxxx
 PUSHER_APP_SECRET=xxxx
 PUSHER_APP_CLUSTER=ap2
 BROADCAST_DRIVER=pusher
+PUSHER_APP_USETLS=true
+VITE_PUSHER_APP_KEY=5fa2c0af5c6f5f0aeb40
+VITE_PUSHER_APP_CLUSTER=ap2
+
 ```
 8️⃣ Run Migrations
 ```
