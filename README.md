@@ -10,7 +10,8 @@ This application allows users to manage funds, transfer money, view transaction 
 1️⃣ Clone the Repository
 ```
 git clone https://github.com/pramod-alpy/wallet.git
-cd wallet-app
+cd wallet
+
 ```
 
 
@@ -42,14 +43,15 @@ DB_PASSWORD=
 ```
 7️⃣ Setup Pusher 
 ```
-PUSHER_APP_ID=xxxx
-PUSHER_APP_KEY=xxxx
-PUSHER_APP_SECRET=xxxx
+
+PUSHER_APP_ID=2078432
+PUSHER_APP_KEY=5fa2c0af5c6f5f0aeb40
+PUSHER_APP_SECRET=289be947a5903bf8270e
 PUSHER_APP_CLUSTER=ap2
-BROADCAST_DRIVER=pusher
 PUSHER_APP_USETLS=true
 VITE_PUSHER_APP_KEY=5fa2c0af5c6f5f0aeb40
 VITE_PUSHER_APP_CLUSTER=ap2
+
 
 ```
 8️⃣ Run Migrations
