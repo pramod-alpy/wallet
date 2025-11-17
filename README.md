@@ -14,7 +14,6 @@ cd wallet
 
 ```
 
-
 2️⃣ Install PHP Dependencies
 ```
 composer install
@@ -39,11 +38,9 @@ DB_PORT=3306
 DB_DATABASE=wallet_db
 DB_USERNAME=root
 DB_PASSWORD=
-
 ```
 7️⃣ Setup Pusher 
 ```
-
 PUSHER_APP_ID=2078432
 PUSHER_APP_KEY=5fa2c0af5c6f5f0aeb40
 PUSHER_APP_SECRET=289be947a5903bf8270e
@@ -51,8 +48,6 @@ PUSHER_APP_CLUSTER=ap2
 PUSHER_APP_USETLS=true
 VITE_PUSHER_APP_KEY=5fa2c0af5c6f5f0aeb40
 VITE_PUSHER_APP_CLUSTER=ap2
-
-
 ```
 8️⃣ Run Migrations
 ```

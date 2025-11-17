@@ -18,7 +18,7 @@
      ]">
       {{ flashMessage }}
     </div>
-          <div>
+          <div class="p-3 mt-3 ">
             <p><strong>My Wallet Balance:</strong> <span id="user-balance">{{ formatCurrency(balance) }}</span></p>
 
             <!-- Action Buttons -->
