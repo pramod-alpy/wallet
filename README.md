@@ -70,11 +70,12 @@ npm run dev
 ```
 
 👤 Demo Login Credentials
-
-* Email: demo1@gmail.com/demo2@gmail.com
+```
+* Email: demo1@gmail.com / demo2@gmail.com
 
 * Password: password
 
+```
 💸 How to Use
 
 Add Money
