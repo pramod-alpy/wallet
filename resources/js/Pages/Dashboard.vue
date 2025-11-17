@@ -231,7 +231,10 @@ echo.private(`user.${user.value.id}`)
     })
     .listen('.balance.updated', (e) => {
         console.log("EVENT RECEIVED:", e);
-        balance.value = e.newBalance;
+        balance.value = e.newBalance;       
+        if (e.transaction) {               
+        transactions.value.unshift(e.transaction);
+    }
     });
 };
 

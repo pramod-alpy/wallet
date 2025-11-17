@@ -15,11 +15,13 @@ class MoneyTransferred implements ShouldBroadcast
 
     public $userId;
     public $newBalance;
+    public $transaction;
 
-    public function __construct($userId, $newBalance)
+    public function __construct($userId, $newBalance, $transaction)
     {      
         $this->userId = $userId;
         $this->newBalance = $newBalance;
+        $this->transaction = $transaction;
     }
 
     public function broadcastOn()

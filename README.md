@@ -71,7 +71,7 @@ npm run dev
 
 👤 Demo Login Credentials
 
-* Email: pramod.alpy84@gmail.com
+* Email: demo1@gmail.com/demo2@gmail.com
 
 * Password: password
 

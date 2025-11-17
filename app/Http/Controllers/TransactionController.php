@@ -41,7 +41,7 @@ class TransactionController extends Controller
             'balance' => $user->balance,
         ]);
     }
-    
+
     public function store(Request $request)
     {
         $request->validate([
@@ -70,9 +70,11 @@ class TransactionController extends Controller
             'commission_fee' => $commission,
         ]);      
 
-        broadcast(new MoneyTransferred($sender->id, $sender->balance));      
+        $transaction = Transaction::with(['sender', 'receiver'])->find($transaction->id);
+        
+        broadcast(new MoneyTransferred($sender->id, $sender->balance, $transaction));      
 
-        broadcast(new MoneyTransferred($receiver->id, $receiver->balance));
+        broadcast(new MoneyTransferred($receiver->id, $receiver->balance, $transaction));
 
         return response()->json([
             'message' => 'Transfer successful',
