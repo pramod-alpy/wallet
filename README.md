@@ -1,7 +1,7 @@
 
 Laravel Wallet App
 
-A secure and real-time digital wallet built with Laravel, Vue.js, Pusher/WebSockets, and Laravel Sanctum.
+A secure and real-time digital wallet built with Laravel, Vue.js, Pusher, and Laravel Sanctum.
 This application allows users to manage funds, transfer money, view transaction history, and receive instant real-time updates whenever money is sent or received.
 
 📦 Installation
@@ -102,3 +102,20 @@ The amount will be debited from your account and displayed in the Transaction Hi
 * Frontend: Vue.js, Tailwind CSS
 
 * Other: Composer, npm
+
+✨ Screenshots
+
+User Authentication:
+![Login](screenshots/Login.png)
+
+Demo User 1 - Dashboard:
+![User -1 Dashboard](screenshots/Dashboard.png)
+
+Add Funds:
+![Add Funds](screenshots/AddFunds.png)
+
+Send Money:
+![Login](screenshots/SendMoney.png)
+
+Demo User 2 - Dashboard With Transaction History
+![Login](screenshots/ReceiverDashBoard.png)
