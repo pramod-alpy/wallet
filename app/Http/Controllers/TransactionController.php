@@ -11,6 +11,11 @@ use Illuminate\Support\Facades\Log;
 
 class TransactionController extends Controller
 {
+    /**
+     * Retrieves the authenticated user's current wallet balance and transaction history.
+     *
+     * @return \Illuminate\Http\JsonResponse JSON response containing balance and transactions
+     */
     public function index()
     {       
         $user = Auth::user();
@@ -25,6 +30,13 @@ class TransactionController extends Controller
                 ->get(),
         ]);
     }
+
+    /**
+     * Adds funds to the authenticated user's wallet.
+     * The updated balance is immediately reflected after a successful transfer.
+     * @param \Illuminate\Http\Request $request The HTTP request containing the amount to add
+     * @return \Illuminate\Http\JsonResponse JSON response with success message and updated balance      
+     */
 
     public function addFunds(Request $request)
     {
@@ -42,6 +54,17 @@ class TransactionController extends Controller
         ]);
     }
 
+    /**
+     *  Handles money transfer from the authenticated user to another user
+     *  @param \Illuminate\Http\Request $request The HTTP request containing receiver ID and amount
+     *  @return \Illuminate\Http\JsonResponse JSON response with success or error message
+     *  Input the User ID and the amount need to Transfer
+     *  After Succesful transfer it balance amount from Sender will be debited authomatically 
+     *  and Receicer Wallet balances and transaction history will automatically
+     *  updated using Broadcast Functionality
+     *  
+     */
+
     public function store(Request $request)
     {
         $request->validate([
@@ -55,7 +78,7 @@ class TransactionController extends Controller
         $totalDebit = $amount + $commission;
         if ($sender->balance < $totalDebit) {
             return response()->json([
-                'message' => 'Insufficient balance to complete the transaction.',
+                'message' => 'Insufficient balance to complete the transaction, add funds to your account',
             ], 400);
         }
         $sender->balance -= $totalDebit;
@@ -82,10 +105,5 @@ class TransactionController extends Controller
         ]);
     }   
 
-
-
-    public function balance()
-    {
-        return response()->json(['balance' => Auth::user()->balance]);
-    }
+    
 }

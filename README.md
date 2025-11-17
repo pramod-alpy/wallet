@@ -87,7 +87,7 @@ Send Money
 
 * Click the Send Money button
 
-* Enter the Receiver ID (e.g., 2)
+* Enter the Receiver ID (e.g., Enter 2 - (Demo User 2 Receiver ID=2))
 
 * Enter the Amount (e.g., 10)
 

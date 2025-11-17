@@ -27,8 +27,7 @@
                 Add Money
               </button>
 
-              <button 
-                v-if="balance > 0" 
+              <button                
                 @click="showSendForm = !showSendForm; showAddForm = false"
                 class="px-4 py-2 bg-green-600 text-white rounded"
               >
@@ -246,15 +245,11 @@ onMounted(async () => {
 });
 
 // Watch for user.id and initialize Echo once available
-watch(
-  () => user.value?.id,
-  (id) => {  
+watch(() => user.value?.id,(id) => {  
     if (id) initEcho(id);
-  },
-  { immediate: true }
+  },{ immediate: true }
 );
 </script>
-
 
 <style scoped>
 button {
